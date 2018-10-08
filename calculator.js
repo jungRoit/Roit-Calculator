@@ -3,35 +3,39 @@ let num1 = "";
 let num2 = "";
 let operator = "";
 
+function getObject(id){
+	return document.getElementById(id);
+}
+
 function btnClicked(num){
-    if(num == '.' && document.getElementById('display').value == ""){
-        document.getElementById('display').value = "0" + num;
+    if(num == '.' && getObject('display').value == ""){
+        getObject('display').value = "0" + num;
     }else{
-    let display = document.getElementById('display').value += num;
+    let display = getObject('display').value += num;
     }
 }
 
 function clearScreen(){
-    document.getElementById('display').value = "";
+    getObject('display').value = "";
 }
 
 function operatorClicked(opr){
     operator = opr;
-    num1 = parseFloat(document.getElementById('display').value);
+    num1 = parseFloat(getObject('display').value);
     clearScreen();
 }
 
 function calculate(){
-    num2 = parseFloat(document.getElementById('display').value);
+    num2 = parseFloat(getObject('display').value);
      
     switch(operator){
-        case '+' : document.getElementById('display').value = (num1 + num2).toFixed(3);
+        case '+' : getObject('display').value = (num1 + num2).toFixed(2);
                     break;
-        case '-' : document.getElementById('display').value = (num1 - num2).toFixed(3);
+        case '-' : getObject('display').value = (num1 - num2).toFixed(2);
                     break;
-        case '*' : document.getElementById('display').value = (num1 * num2).toFixed(3);
+        case '*' : getObject('display').value = (num1 * num2).toFixed(2);
                     break;
-        case '/' : document.getElementById('display').value = (num1 / num2).toFixed(3);
+        case '/' : getObject('display').value = (num1 / num2).toFixed(2);
                     break;
     }
 }
